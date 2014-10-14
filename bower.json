@@ -1,0 +1,29 @@
+{
+  "name": "media-carousel",
+  "version": "0.0.0",
+  "authors": [
+    "Sergey N. Bolshchikov <sergey@bolshchikov.net>"
+  ],
+  "description": "Carousel Gallery Component",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "gallery",
+    "carousel",
+    "wix"
+  ],
+  "main": "media-carousel.html",
+  "license": "GPL",
+  "homepage": "https://github.com/bolshchikov/media-carousel",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.4.1"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^0.7.3"
+  }
+}
