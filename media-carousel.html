@@ -10,12 +10,16 @@
 <link rel="import" href="../polymer/polymer.html"/>
 <link rel="import" href="../core-animated-pages/core-animated-pages.html"/>
 <link rel="import" href="../core-animated-pages/transitions/slide-from-right.html"/>
+<link rel="import" href="../core-icons/core-icons.html"/>
 
 <polymer-element name="media-carousel">
 
   <template>
     <link rel="stylesheet" href="media-carousel.css"/>
-    <core-animated-pages id="carousel" transitions="slide-from-right" on-click="{{next}}">
+    <div id="prev" on-click="{{prev}}">
+      <core-icon icon="chevron-left"></core-icon>
+    </div>
+    <core-animated-pages id="carousel" transitions="slide-from-right">
       <section>
         <div layout vertical center center-justified style="background:red;">
           <div>1</div>
@@ -37,6 +41,9 @@
         </div>
       </section>
     </core-animated-pages>
+    <div id="next" on-click="{{next}}">
+      <core-icon icon="chevron-right"></core-icon>
+    </div>
 
   </template>
 
@@ -44,7 +51,12 @@
     (function () {
       Polymer({
         next: function () {
-          this.$.carousel.selected += 1;
+          var el = this.$.carousel;
+          el.selected = (el.children.length === el.selected + 1) ? 0 : el.selected + 1;
+        },
+        prev: function () {
+          var el = this.$.carousel;
+          el.selected = (el.selected === 0) ? el.children.length - 1 : el.selected - 1;
         }
       });
     })();

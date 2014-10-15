@@ -22,7 +22,8 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^0.4.1",
-    "core-animated-pages": "Polymer/core-animated-pages#~0.4.2"
+    "core-animated-pages": "Polymer/core-animated-pages#~0.4.2",
+    "core-icon": "Polymer/core-icon#~0.4.2"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^0.7.3"
