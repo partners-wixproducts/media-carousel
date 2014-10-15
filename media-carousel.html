@@ -7,18 +7,46 @@
     Code distributed by Google as part of the polymer project is also
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="../core-animated-pages/core-animated-pages.html"/>
+<link rel="import" href="../core-animated-pages/transitions/slide-from-right.html"/>
 
 <polymer-element name="media-carousel">
 
   <template>
     <link rel="stylesheet" href="media-carousel.css"/>
+    <core-animated-pages id="carousel" transitions="slide-from-right" on-click="{{next}}">
+      <section>
+        <div layout vertical center center-justified style="background:red;">
+          <div>1</div>
+        </div>
+      </section>
+      <section>
+        <div layout vertical center center-justified style="background:blue;">
+          <div>2</div>
+        </div>
+      </section>
+      <section>
+        <div layout vertical center center-justified style="background:purple;">
+          <div>3</div>
+        </div>
+      </section>
+      <section>
+        <div layout vertical center center-justified style="background:orange;">
+          <div>4</div>
+        </div>
+      </section>
+    </core-animated-pages>
 
   </template>
 
   <script>
     (function () {
-      Polymer({});
+      Polymer({
+        next: function () {
+          this.$.carousel.selected += 1;
+        }
+      });
     })();
   </script>
 
