@@ -16,32 +16,39 @@
   <template>
     <link rel="stylesheet" href="media-carousel.css"/>
 
-    <div id="prev" on-click="{{prev}}">
+    <div layout vertical center center-justified id="prev" on-click="{{prev}}">
       <core-icon icon="chevron-left"></core-icon>
     </div>
 
     <core-animated-pages id="carousel" transitions="slide-from-right">
       <template repeat="{{idx in items}}">
         <section>
-          <content select="*[data-index='{{idx}}']"></content>
+          <div  layout vertical center center-justified>
+            <content select="*[data-index='{{idx}}']"></content>
+          </div>
         </section>
       </template>
     </core-animated-pages>
 
-    <div id="next" on-click="{{next}}">
+    <div layout vertical center center-justified id="next" on-click="{{next}}">
       <core-icon icon="chevron-right"></core-icon>
     </div>
   </template>
 
   <script>
     (function () {
+
+      function rangeOff(length, off) {
+        return Array
+          .apply(null, Array(length))
+          .map(function (x, idx) {
+            return idx + off;
+          });
+      }
+
       Polymer({
         created: function () {
-          this.items = Array
-              .apply(null, Array(this.children.length))
-              .map(function (x, idx) {
-                return idx + 1;
-              });
+          this.items = rangeOff(this.children.length, 1);
         },
         next: function () {
           var el = this.$.carousel;

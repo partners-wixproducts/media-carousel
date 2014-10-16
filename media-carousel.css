@@ -1,7 +1,35 @@
 :host {
   display: block;
+  position: relative;
+}
+
+core-animated-pages {
+  width: 100%;
+}
+
+#prev, #next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 77px;
+  z-index: 100;
+  background-repeat: repeat-x;
+  opacity: 0.5;
+}
+
+#prev core-icon, #next core-icon {
+  transform: scale(2);
+}
+#prev {
+  left: 0;
+  background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%)
+}
+#next {
+  right: 0;
+  background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
 }
 
 #prev:hover, #next:hover {
   cursor: pointer;
+  opacity: 0.9;
 }
