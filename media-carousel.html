@@ -13,50 +13,43 @@
 <link rel="import" href="../core-icons/core-icons.html"/>
 
 <polymer-element name="media-carousel">
-
   <template>
     <link rel="stylesheet" href="media-carousel.css"/>
+
     <div id="prev" on-click="{{prev}}">
       <core-icon icon="chevron-left"></core-icon>
     </div>
+
     <core-animated-pages id="carousel" transitions="slide-from-right">
-      <section>
-        <div layout vertical center center-justified style="background:red;">
-          <div>1</div>
-        </div>
-      </section>
-      <section>
-        <div layout vertical center center-justified style="background:blue;">
-          <div>2</div>
-        </div>
-      </section>
-      <section>
-        <div layout vertical center center-justified style="background:purple;">
-          <div>3</div>
-        </div>
-      </section>
-      <section>
-        <div layout vertical center center-justified style="background:orange;">
-          <div>4</div>
-        </div>
-      </section>
+      <template repeat="{{idx in items}}">
+        <section>
+          <content select="*[data-index='{{idx}}']"></content>
+        </section>
+      </template>
     </core-animated-pages>
+
     <div id="next" on-click="{{next}}">
       <core-icon icon="chevron-right"></core-icon>
     </div>
-
   </template>
 
   <script>
     (function () {
       Polymer({
+        created: function () {
+          this.items = Array
+              .apply(null, Array(this.children.length))
+              .map(function (x, idx) {
+                return idx + 1;
+              });
+        },
         next: function () {
           var el = this.$.carousel;
-          el.selected = (el.children.length === el.selected + 1) ? 0 : el.selected + 1;
+          el.selected = (el.items.length === el.selected + 1) ? 0 : el.selected + 1;
         },
         prev: function () {
           var el = this.$.carousel;
-          el.selected = (el.selected === 0) ? el.children.length - 1 : el.selected - 1;
+          el.selected = (el.selected === 0) ? el.items.length - 1 : el.selected - 1;
         }
       });
     })();
