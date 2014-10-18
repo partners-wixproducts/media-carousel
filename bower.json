@@ -15,7 +15,7 @@
   ],
   "main": "media-carousel.html",
   "license": "GPL",
-  "homepage": "https://github.com/bolshchikov/media-carousel",
+  "homepage": "https://github.com/wix/media-carousel",
   "ignore": [
     "/.*",
     "/test/"
