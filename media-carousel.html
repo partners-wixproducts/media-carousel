@@ -23,7 +23,7 @@
     <core-animated-pages id="carousel" transitions="slide-from-right">
       <template repeat="{{idx in items}}">
         <section>
-          <div  layout vertical center center-justified>
+          <div layout vertical center center-justified>
             <content select="*[data-index='{{idx}}']"></content>
           </div>
         </section>
@@ -33,6 +33,7 @@
     <div layout vertical center center-justified id="next" on-click="{{next}}">
       <core-icon icon="chevron-right"></core-icon>
     </div>
+
   </template>
 
   <script>
@@ -46,17 +47,26 @@
           });
       }
 
+      var carousel;
+
       Polymer({
         created: function () {
           this.items = rangeOff(this.children.length, 1);
         },
+        attached: function () {
+          carousel = this.$.carousel;
+        },
+        detached: function () {
+          carousel = null;
+        },
         next: function () {
-          var el = this.$.carousel;
-          el.selected = (el.items.length === el.selected + 1) ? 0 : el.selected + 1;
+          carousel.selected = (carousel.items.length === carousel.selected + 1) ? 0 : carousel.selected + 1;
         },
         prev: function () {
-          var el = this.$.carousel;
-          el.selected = (el.selected === 0) ? el.items.length - 1 : el.selected - 1;
+          carousel.selected = (carousel.selected === 0) ? carousel.items.length - 1 : carousel.selected - 1;
+        },
+        get selected() {
+          return carousel.selected;
         }
       });
     })();

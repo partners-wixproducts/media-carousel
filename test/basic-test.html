@@ -23,16 +23,33 @@
 <body>
 
   <!-- You use the document as a place to set up your fixtures. -->
-  <media-carousel></media-carousel>
+  <media-carousel>
+    <img data-index="1" src="http://static-dev.wixstatic.com/media/fb2cfede96be3d1ceebe8f3274af2433.jpg_srz_250_250_75_22_0.5_1.2_0.00_jpg_srz" alt=""/>
+    <img data-index="2" src="http://static-dev.wixstatic.com/media/c142e99712d4bb42acc2632cc16bb5bd.jpg_srz_250_250_75_22_0.5_1.2_0.00_jpg_srz" alt=""/>
+  </media-carousel>
 
   <script>
-    var myEl = document.querySelector('seed-element');
+    var mc = document.querySelector('media-carousel');
 
     suite('<media-carousel>', function() {
 
-      test('basic test', function () {
-        expect(true).to.equal(true);
+      test('init', function () {
+        expect(mc.items.length).to.equal(2);
+        expect(mc.selected).to.equal(0)
       });
+
+      test('next', function () {
+        mc.next();
+        expect(mc.selected).to.equal(1);
+      });
+
+      test('circle', function () {
+        mc.next();
+        expect(mc.selected).to.equal(0);
+        mc.prev();
+        expect(mc.selected).to.equal(1);
+      });
+
 
     });
   </script>
