@@ -15,7 +15,7 @@ Media carousel is a web component for any media object similar to bootstrap's ca
 * Add the following code to your html to use the component
       
  ```html
- <media-carousel>
+ <media-carousel style="height: <set the height>">
     <img data-index="1" src="image1.jpg" />
     <img data-index="2" src="image2.jpg" />
  </media-carousel>
