@@ -5,6 +5,17 @@
 
 core-animated-pages {
   width: 100%;
+  height: 100%;
+}
+
+.item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
 #prev, #next {
@@ -18,6 +29,9 @@ core-animated-pages {
 }
 
 #prev core-icon, #next core-icon {
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
   transform: scale(2);
 }
 #prev {

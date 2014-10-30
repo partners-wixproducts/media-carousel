@@ -23,7 +23,7 @@
     <core-animated-pages id="carousel" transitions="slide-from-right">
       <template repeat="{{idx in items}}">
         <section>
-          <div layout vertical center center-justified>
+          <div class="item">
             <content select="*[data-index='{{idx}}']"></content>
           </div>
         </section>
